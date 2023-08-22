@@ -6,12 +6,12 @@ After=network.target
 [Service]
 User=ubuntu
 Group=www-data
-WorkingDirectory=/home/ubuntu/blogprojectdrf
-EnvironmentFile=/home/ubuntu/projects/test_aws_deploy/.env
-ExecStart=/home/ubuntu/projects/test_aws_deploy/venv/bin/gunicorn \
+WorkingDirectory=/home/ubuntu/projects/aws_production
+EnvironmentFile=/home/ubuntu/projects/aws_production/.env_sys
+ExecStart=/home/ubuntu/projects/aws_production/env/bin/gunicorn \
           --access-logfile - \
           --workers 3 \
           --bind unix:/run/gunicorn.sock \
-          backend.wsgi:application
+          config.wsgi:application
 [Install]
 WantedBy=multi-user.target
